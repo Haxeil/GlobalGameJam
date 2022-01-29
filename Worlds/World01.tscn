@@ -37,6 +37,32 @@ position = Vector2( 33.5, 0 )
 scale = Vector2( 8.79688, 1 )
 texture = ExtResource( 2 )
 
+[node name="Ground4" type="StaticBody2D" parent="."]
+position = Vector2( 473, 269 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground4"]
+position = Vector2( 36.5, 2 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Ground4"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 33.5, 0 )
+scale = Vector2( 8.79688, 1 )
+texture = ExtResource( 2 )
+
+[node name="Ground5" type="StaticBody2D" parent="."]
+position = Vector2( -176, 357 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground5"]
+position = Vector2( 36.5, 2 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Ground5"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 33.5, 0 )
+scale = Vector2( 8.79688, 1 )
+texture = ExtResource( 2 )
+
 [node name="Ground3" type="StaticBody2D" parent="."]
 position = Vector2( 943, 535 )
 

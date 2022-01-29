@@ -49,7 +49,7 @@ public class Player : KinematicBody2D
 	public void ApplyGravity() {
 		if (RayCheckOnCelling()) {
 			velocity.y = 0;
-			velocity.y = gravity;
+			velocity.y = gravity * 5;
 		}
 
 
@@ -157,30 +157,28 @@ public class Player : KinematicBody2D
 	}
 	//checking if player grounded by RayCasting rather than the Default IsOnfloor()
 	private bool RayCheckOnFloor() {
+		var isColliding = false;
 		foreach (RayCast2D ray in this.Floor.GetChildren()) {
 			if (ray.IsColliding()) {
-				return true;
-			} else {
-				continue;
+				isColliding = true;
 			}
 		}
-		return false;
+		return isColliding;
 
 	}
 
 	private bool RayCheckOnCelling() {
+		var isColliding = false;
 		foreach (RayCast2D ray in this.Celling.GetChildren()) {
 			if (ray.IsColliding()) {
-				return true;
-			} else {
-				return false;
+				isColliding = true;
 			}
 		}
 
-		return false;
+		return isColliding;
 
 	}
-
+	//To exclude Player From Collision check 
 	private void RayException() {
 		foreach (RayCast2D ray in this.Celling.GetChildren()) {
 			ray.AddException(this);

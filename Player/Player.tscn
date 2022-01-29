@@ -3,8 +3,9 @@
 [ext_resource path="res://Player/Player.cs" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30, 31.5 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 35.0
+height = 0.0
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -16,43 +17,42 @@ health = 100.0
 wait_time = 0.15
 one_shot = true
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( -1, -0.5 )
-shape = SubResource( 1 )
-
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
 [node name="Celling" type="Node2D" parent="."]
 
 [node name="InCelling01" type="RayCast2D" parent="Celling"]
-position = Vector2( 30, -23 )
+position = Vector2( 17, -23 )
 enabled = true
 cast_to = Vector2( 0, -10 )
 
 [node name="InCelling02" type="RayCast2D" parent="Celling"]
-position = Vector2( 0, -23 )
+position = Vector2( 0, -26 )
 enabled = true
 cast_to = Vector2( 0, -10 )
 
 [node name="InCelling03" type="RayCast2D" parent="Celling"]
-position = Vector2( -28, -23 )
+position = Vector2( -17, -23 )
 enabled = true
 cast_to = Vector2( 0, -10 )
 
 [node name="Floor" type="Node2D" parent="."]
 
 [node name="InFloor01" type="RayCast2D" parent="Floor"]
-position = Vector2( 30, 23 )
+position = Vector2( 17, 23 )
 enabled = true
 cast_to = Vector2( 0, 10 )
 
 [node name="InFloor02" type="RayCast2D" parent="Floor"]
-position = Vector2( 0, 23 )
+position = Vector2( 0, 26 )
 enabled = true
 cast_to = Vector2( 0, 10 )
 
 [node name="InFloor03" type="RayCast2D" parent="Floor"]
-position = Vector2( -28, 23 )
+position = Vector2( -17, 23 )
 enabled = true
 cast_to = Vector2( 0, 10 )

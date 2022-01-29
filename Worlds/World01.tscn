@@ -8,15 +8,8 @@ extents = Vector2( 280.5, 29 )
 
 [node name="World01" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 494, 333 )
-
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2( 452, 455 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-position = Vector2( 36.5, 2 )
-shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Ground"]
 modulate = Color( 0, 0, 0, 1 )
@@ -24,12 +17,12 @@ position = Vector2( 33.5, 0 )
 scale = Vector2( 8.79688, 1 )
 texture = ExtResource( 2 )
 
-[node name="Ground2" type="StaticBody2D" parent="."]
-position = Vector2( 47, 529 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2( 36.5, 2 )
 shape = SubResource( 1 )
+
+[node name="Ground2" type="StaticBody2D" parent="."]
+position = Vector2( 47, 529 )
 
 [node name="Sprite" type="Sprite" parent="Ground2"]
 modulate = Color( 0, 0, 0, 1 )
@@ -37,12 +30,12 @@ position = Vector2( 33.5, 0 )
 scale = Vector2( 8.79688, 1 )
 texture = ExtResource( 2 )
 
-[node name="Ground4" type="StaticBody2D" parent="."]
-position = Vector2( 473, 269 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
 position = Vector2( 36.5, 2 )
 shape = SubResource( 1 )
+
+[node name="Ground4" type="StaticBody2D" parent="."]
+position = Vector2( 473, 269 )
 
 [node name="Sprite" type="Sprite" parent="Ground4"]
 modulate = Color( 0, 0, 0, 1 )
@@ -50,12 +43,12 @@ position = Vector2( 33.5, 0 )
 scale = Vector2( 8.79688, 1 )
 texture = ExtResource( 2 )
 
-[node name="Ground5" type="StaticBody2D" parent="."]
-position = Vector2( -176, 357 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground4"]
 position = Vector2( 36.5, 2 )
 shape = SubResource( 1 )
+
+[node name="Ground5" type="StaticBody2D" parent="."]
+position = Vector2( -176, 357 )
 
 [node name="Sprite" type="Sprite" parent="Ground5"]
 modulate = Color( 0, 0, 0, 1 )
@@ -63,15 +56,22 @@ position = Vector2( 33.5, 0 )
 scale = Vector2( 8.79688, 1 )
 texture = ExtResource( 2 )
 
-[node name="Ground3" type="StaticBody2D" parent="."]
-position = Vector2( 943, 535 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground5"]
 position = Vector2( 36.5, 2 )
 shape = SubResource( 1 )
+
+[node name="Ground3" type="StaticBody2D" parent="."]
+position = Vector2( 943, 535 )
 
 [node name="Sprite" type="Sprite" parent="Ground3"]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 33.5, 0 )
 scale = Vector2( 8.79688, 1 )
 texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3"]
+position = Vector2( 36.5, 2 )
+shape = SubResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 494, 333 )

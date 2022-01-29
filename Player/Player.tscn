@@ -31,30 +31,34 @@ shape = SubResource( 1 )
 position = Vector2( 17, -23 )
 enabled = true
 cast_to = Vector2( 0, -10 )
+collision_mask = 4
 
 [node name="InCelling02" type="RayCast2D" parent="Celling"]
 position = Vector2( 0, -26 )
 enabled = true
 cast_to = Vector2( 0, -10 )
+collision_mask = 4
 
 [node name="InCelling03" type="RayCast2D" parent="Celling"]
 position = Vector2( -17, -23 )
 enabled = true
 cast_to = Vector2( 0, -10 )
+collision_mask = 4
 
 [node name="Floor" type="Node2D" parent="."]
 
 [node name="InFloor01" type="RayCast2D" parent="Floor"]
 position = Vector2( 17, 23 )
-enabled = true
 cast_to = Vector2( 0, 10 )
+collision_mask = 4
 
 [node name="InFloor02" type="RayCast2D" parent="Floor"]
 position = Vector2( 0, 26 )
 enabled = true
 cast_to = Vector2( 0, 10 )
+collision_mask = 4
 
 [node name="InFloor03" type="RayCast2D" parent="Floor"]
 position = Vector2( -17, 23 )
-enabled = true
 cast_to = Vector2( 0, 10 )
+collision_mask = 4

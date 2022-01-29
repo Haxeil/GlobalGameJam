@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Doors/DoorPerson.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Doors/DoorGhost.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Spider/Spider.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 280.5, 29 )
@@ -12,6 +13,8 @@ extents = Vector2( 280.5, 29 )
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2( 452, 455 )
+collision_layer = 4
+collision_mask = 33
 
 [node name="Sprite" type="Sprite" parent="Ground"]
 modulate = Color( 0, 0, 0, 1 )
@@ -25,6 +28,8 @@ shape = SubResource( 1 )
 
 [node name="Ground2" type="StaticBody2D" parent="."]
 position = Vector2( 47, 529 )
+collision_layer = 4
+collision_mask = 33
 
 [node name="Sprite" type="Sprite" parent="Ground2"]
 modulate = Color( 0, 0, 0, 1 )
@@ -37,7 +42,9 @@ position = Vector2( 36.5, 2 )
 shape = SubResource( 1 )
 
 [node name="Ground4" type="StaticBody2D" parent="."]
-position = Vector2( 473, 269 )
+position = Vector2( 436, 306 )
+collision_layer = 4
+collision_mask = 33
 
 [node name="Sprite" type="Sprite" parent="Ground4"]
 modulate = Color( 0, 0, 0, 1 )
@@ -51,6 +58,8 @@ shape = SubResource( 1 )
 
 [node name="Ground5" type="StaticBody2D" parent="."]
 position = Vector2( -176, 357 )
+collision_layer = 4
+collision_mask = 33
 
 [node name="Sprite" type="Sprite" parent="Ground5"]
 modulate = Color( 0, 0, 0, 1 )
@@ -64,6 +73,8 @@ shape = SubResource( 1 )
 
 [node name="Ground3" type="StaticBody2D" parent="."]
 position = Vector2( 943, 535 )
+collision_layer = 4
+collision_mask = 33
 
 [node name="Sprite" type="Sprite" parent="Ground3"]
 modulate = Color( 0, 0, 0, 1 )
@@ -84,3 +95,6 @@ position = Vector2( 526, 170 )
 
 [node name="DoorGhost" parent="." instance=ExtResource( 4 )]
 position = Vector2( 923, 441 )
+
+[node name="Spider" parent="." instance=ExtResource( 5 )]
+position = Vector2( -35, 186 )

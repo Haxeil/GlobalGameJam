@@ -51,7 +51,7 @@ public class Player : KinematicBody2D
 	public void ApplyGravity() {
 		if (RayCheckOnCelling()) {
 			velocity.y = 0;
-			velocity.y = gravity * 5;
+			velocity.y = gravity + this.jumpPower/2;
 		}
 
 
@@ -152,7 +152,7 @@ public class Player : KinematicBody2D
 			EmitSignal("healthUpdated", this.health);
 			if (this.health == 0)
 			{
-				//TODO Die();
+				Die();
 				EmitSignal("killed", this);
 			}
 		}
@@ -189,4 +189,19 @@ public class Player : KinematicBody2D
 			ray.AddException(this);
 		}
 	}
+	private void ApplyDamage(float amount, Vector2 damageVector, int enemyDirection) {
+		EmitSignal("changeState", Enums.PlayerState.HURT);
+		SetHealth(this.health - amount);
+		this.velocity = Vector2.Zero;
+		this.velocity += new Vector2(damageVector.x * enemyDirection, -damageVector.y);
+
+	}
+	async private void Die() {
+
+		EmitSignal("changeState", Enums.PlayerState.DEAD);
+		//TODO await ToSignal(this.animSprite, "animation_finished");
+		//TODO deathRestart.Start();
+	}
+
+
 }

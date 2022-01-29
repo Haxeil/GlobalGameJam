@@ -4,7 +4,7 @@ using System;
 public class Player : KinematicBody2D
 {
 	
-	[Export] private Vector2 velocity = Vector2.Zero;
+	[Export] public Vector2 velocity = Vector2.Zero;
 	[Export] private float speed = 50.0f;
 	[Export] private float friction = 0.1f;
 	[Export] private float jumpPower = 200;
@@ -23,6 +23,8 @@ public class Player : KinematicBody2D
 	StateMachine state = new StateMachine();
 
 	private bool isOnGround = false;
+	public bool canMove = true;
+
 	public override void _Ready() {
 		Init();
 		this.health = this.maxHealth;
@@ -68,7 +70,7 @@ public class Player : KinematicBody2D
 
 	private void Move(float delta) {
 		
-		if (this.state.currentState != Enums.PlayerState.HURT) {
+		if (canMove && this.state.currentState != Enums.PlayerState.HURT) {
 			if (Input.IsActionPressed("Right") && !Input.IsActionPressed("Left")) {
 				
 				EmitSignal("changeState", Enums.PlayerState.RUN);
@@ -104,13 +106,13 @@ public class Player : KinematicBody2D
 		{
 			cayoteTimer.Start();
 		}	
-}
+	}
 
 	private void Jump() {
 
 
 		if (Input.IsActionPressed("Jump")) {
-			if (this.isOnGround || !this.cayoteTimer.IsStopped()) {
+			if ((this.canMove && this.isOnGround) || !this.cayoteTimer.IsStopped()) {
 				//ApplyDamage(25);
 				cayoteTimer.Stop();
 				velocity.y = -jumpPower;

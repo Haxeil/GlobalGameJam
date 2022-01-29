@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Doors/DoorPerson.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Doors/DoorGhost.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 280.5, 29 )
@@ -75,3 +77,10 @@ shape = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 494, 333 )
+collision_mask = 4
+
+[node name="DoorPerson" parent="." instance=ExtResource( 3 )]
+position = Vector2( 526, 170 )
+
+[node name="DoorGhost" parent="." instance=ExtResource( 4 )]
+position = Vector2( 923, 441 )

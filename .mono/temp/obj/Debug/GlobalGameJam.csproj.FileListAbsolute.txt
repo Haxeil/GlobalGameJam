@@ -1,0 +1,8 @@
+/home/haxeil/Dev/GlobalGameJam/.mono/temp/bin/Debug/GlobalGameJam.dll
+/home/haxeil/Dev/GlobalGameJam/.mono/temp/bin/Debug/GlobalGameJam.pdb
+/home/haxeil/Dev/GlobalGameJam/.mono/temp/obj/Debug/GlobalGameJam.csprojAssemblyReference.cache
+/home/haxeil/Dev/GlobalGameJam/.mono/temp/obj/Debug/GlobalGameJam.AssemblyInfoInputs.cache
+/home/haxeil/Dev/GlobalGameJam/.mono/temp/obj/Debug/GlobalGameJam.AssemblyInfo.cs
+/home/haxeil/Dev/GlobalGameJam/.mono/temp/obj/Debug/GlobalGameJam.csproj.CoreCompileInputs.cache
+/home/haxeil/Dev/GlobalGameJam/.mono/temp/obj/Debug/GlobalGameJam.dll
+/home/haxeil/Dev/GlobalGameJam/.mono/temp/obj/Debug/GlobalGameJam.pdb

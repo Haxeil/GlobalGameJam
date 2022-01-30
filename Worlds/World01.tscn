@@ -12,7 +12,7 @@ extents = Vector2( 280.5, 29 )
 [node name="World01" type="Node2D"]
 
 [node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2( 452, 455 )
+position = Vector2( 356, 463 )
 collision_layer = 4
 collision_mask = 33
 
@@ -42,7 +42,7 @@ position = Vector2( 36.5, 2 )
 shape = SubResource( 1 )
 
 [node name="Ground4" type="StaticBody2D" parent="."]
-position = Vector2( 436, 306 )
+position = Vector2( 446, 416 )
 collision_layer = 4
 collision_mask = 33
 
@@ -87,14 +87,15 @@ position = Vector2( 36.5, 2 )
 shape = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 494, 333 )
+position = Vector2( 724, 335 )
 collision_mask = 4
 
 [node name="DoorPerson" parent="." instance=ExtResource( 3 )]
-position = Vector2( 526, 170 )
+position = Vector2( 1139, 412 )
 
 [node name="DoorGhost" parent="." instance=ExtResource( 4 )]
 position = Vector2( 923, 441 )
 
 [node name="Spider" parent="." instance=ExtResource( 5 )]
-position = Vector2( -35, 186 )
+position = Vector2( -289, 169 )
+step_rate = 0.4

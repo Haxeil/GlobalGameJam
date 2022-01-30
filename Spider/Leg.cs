@@ -16,14 +16,14 @@ public class Leg : Position2D
  
 	[Export] bool flipped = true;
  
-	private Vector2 goalPos = Vector2.Zero;
+	public Vector2 goalPos = Vector2.Zero;
 
 	private Vector2 intPos = Vector2.Zero;
 	private Vector2 startPos = Vector2.Zero;
 	private float stepHeight = 40.0f;
 	private float stepRate = 0.5f;
 	private float stepTime = 0.0f;
- 
+	public Vector2 targetPos = Vector2.Zero;
 	public override void _Ready() {
 		joint1 = GetNode<Position2D>("Joint1");
 		joint2 = GetNode<Position2D>("Joint1/Joint2");
@@ -67,25 +67,30 @@ public class Leg : Position2D
 	}
 
 	public override void _Process(float delta) {
-		this.stepTime += delta;
-		var targetPos = Vector2.Zero;
-		var time = this.stepTime / this.stepRate;
+		
+		if (true) {
+			this.stepTime += delta;
+			
+			var time = this.stepTime / this.stepRate;
 
-		if (time < 0.5) {
-			targetPos = this.startPos.LinearInterpolate(this.intPos, time / 0.5f);
+			if (time < 0.5) {
+				targetPos = this.startPos.LinearInterpolate(this.intPos, time / 0.5f);
+
+			}
+			else if (time < 1.0) {
+				targetPos = this.intPos.LinearInterpolate(this.GlobalPosition, (time - 0.5f) / 0.5f);
+			}
+			else {
+				targetPos = this.goalPos;
+
+			}
+			UpdateIk(targetPos);
 
 		}
-		else if (time < 1.0) {
-			targetPos = this.intPos.LinearInterpolate(this.GlobalPosition, (time - 0.5f) / 0.5f);
-		}
-		else {
-			targetPos = this.goalPos;
 
-		}
-		UpdateIk(targetPos);
  
 	}
-	private void UpdateIk(Vector2 targetPos) {
+	public void UpdateIk(Vector2 targetPos) {
 		var offset = targetPos - this.GlobalPosition;
 		var disToTarget = offset.Length();
 

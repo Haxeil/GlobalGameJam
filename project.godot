@@ -14,12 +14,6 @@ config/name="GlobalGameJam"
 run/main_scene="res://Worlds/World01.tscn"
 config/icon="res://icon.png"
 
-[display]
-
-window/size/width=1080
-window/size/height=780
-window/size/borderless=true
-
 [input]
 
 Right={

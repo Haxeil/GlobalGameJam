@@ -24,6 +24,7 @@ public class Player : KinematicBody2D
 
 	private bool isOnGround = false;
 	public bool canMove = true;
+	public Spider spider = null;
 
 	public override void _Ready() {
 		Init();
@@ -46,6 +47,13 @@ public class Player : KinematicBody2D
 		Jump();
 		Move(delta);	
 
+	}
+
+	public override async void _Process(float delta) {
+		if (this.spider != null) {
+			await ToSignal(GetTree(),"idle_frame");
+			this.GlobalPosition = spider.GetNode<Position2D>("FrontLegs/Leg02/Joint1/Joint2/Hand").GlobalPosition;
+		}
 	}
 
 	public void ApplyGravity() {

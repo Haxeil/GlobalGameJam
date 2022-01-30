@@ -20,6 +20,10 @@ public class Spider : KinematicBody2D
 	private int curFLeg = 0;
 	private int curBLeg = 0;
 	private bool useFront = false;
+	public bool canMove = true;
+	private Timer nextPosTimer;
+	private Position2D nextPos;
+	private Timer legAttackTimer;
 	public override void _Ready()
 	{
 		lowMidCheck = GetNode<RayCast2D>("LowMidCheck");
@@ -28,7 +32,9 @@ public class Spider : KinematicBody2D
 		BackCheck = GetNode<RayCast2D>("BackCheck");
 		frontLegs = GetNode<Node2D>("FrontLegs");
 		backLegs = GetNode<Node2D>("BackLegs");
-
+		nextPosTimer = GetNode<Timer>("NextPosTimer");
+		nextPos = GetNode<Position2D>("NextPos");
+		legAttackTimer = GetNode<Timer>("LegAttack");
 		this.FrontCheck.ForceRaycastUpdate();
 		this.BackCheck.ForceRaycastUpdate();
 
@@ -36,12 +42,6 @@ public class Spider : KinematicBody2D
 			Step();
 		}
 	}
-
-
- 
-
- 
-
 
 	public override void _PhysicsProcess(float delta) {
 		var moveVec = new Vector2(this.xSpeed, 0);
@@ -51,9 +51,11 @@ public class Spider : KinematicBody2D
 
 		} else if (!this.lowMidCheck.IsColliding()) {
 			moveVec.y = ySpeed;
-
 		}
-		MoveAndSlide(moveVec);
+		if (canMove) {
+			MoveAndSlide(moveVec);
+		}
+		
 	}
 
  
@@ -90,4 +92,33 @@ public class Spider : KinematicBody2D
 		var target = sensor.GetCollisionPoint();
 		leg.Step(target);
 	}
+
+	//signal
+	private async void CheckPersonBodyEntered(Player person) 
+	{
+		//person.SetDeferred("set_physics_process", false);
+		person.SetPhysicsProcess(false);
+		person.velocity = Vector2.Zero;
+		canMove = false;
+		person.spider = this;
+		nextPosTimer.Start();
+		for (int i = 1; i <= 3; i++) {
+			Leg leg = (Leg)GetNode<Node2D>("FrontLegs").GetChildren()[i];
+			leg.goalPos = person.GlobalPosition;
+
+		}
+
+		await ToSignal(nextPosTimer, "timeout");
+		
+		for (int i = 1; i <= 3; i++) {
+			Leg leg = (Leg)GetNode<Node2D>("FrontLegs").GetChildren()[i];
+			leg.goalPos = this.nextPos.GlobalPosition;
+		}
+		
+
+	}
+
+
+
 }
+
